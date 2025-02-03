@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Survey</title>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 20px;
+        }
+        .question {
+            display: none;
+            margin-bottom: 20px;
+        }
+        .question.active {
+            display: block;
+        }
+	table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 10px;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            text-align: center;
+            padding: 15px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #ff7171;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #e06666;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="survey">
+        <div class="question active" id="question-1">
+            <p><b>1. What best describes your role in the organization?</b></p>
+            <label style='font-family: Montserrat;'><label style='font-family: Montserrat;'><input type="radio" name="role" value="Advanced Practitioner"> Advanced Practitioner</label></label><br>
+            <label><input type="radio" name="role" value="Intermediate Practitioner"> Intermediate Practitioner</label><br>
+            <label><input type="radio" name="role" value="Beginner"> Beginner</label><br>
+            <p><button onclick="nextQuestion(1)">Next</button></p>
+        </div>
+
+        <div class="question" id="question-2">
+            <p><b>2. What is your level of engagement in renovation projects?</b></p>
+            <label><input type="radio" name="engagement" value="High involvement"> High involvement (e.g., leading projects)</label><br>
+            <label><input type="radio" name="engagement" value="Moderate involvement"> Moderate involvement (e.g., participating in projects)</label><br>
+            <label><input type="radio" name="engagement" value="Low involvement"> Low involvement (e.g., interested in learning more)</label><br>
+            <p><button onclick="nextQuestion(2)">Next</button></p>
+        </div>
+
+        <div class="question" id="question-3">
+            <p><b>3. How many renovation projects have you been involved in?</b></p>
+            <label><input type="radio" name="projects" value="0-1"> 0-1</label><br>
+            <label><input type="radio" name="projects" value="2-5"> 2-5</label><br>
+            <label><input type="radio" name="projects" value="More than 5"> More than 5</label><br>
+            <p><button onclick="nextQuestion(3)">Next</button></p>
+        </div>
+
+        <div class="question" id="question-4">
+            <p><b>4. What is your primary objective for using this tool?</b></p>
+            <label><input type="radio" name="objective" value="Learning and development"> Learning and development</label><br>
+            <label><input type="radio" name="objective" value="Networking and collaboration"> Networking and collaboration</label><br>
+            <label><input type="radio" name="objective" value="Leading and managing projects"> Leading and managing projects</label><br>
+            <p><button onclick="nextQuestion(4)">Next</button></p>
+        </div>
+
+        <div class="question" id="question-5">
+            <p><b>5. At what stage is your current or most recent renovation project?</b></p>
+            <label><input type="radio" name="stage" value="Planning"> Planning</label><br>
+            <label><input type="radio" name="stage" value="Implementation"> Implementation</label><br>
+            <label><input type="radio" name="stage" value="Completion"> Completion</label><br>
+            <label><input type="radio" name="stage" value="Post-evaluation"> Post-evaluation</label><br>
+            <p><button onclick="nextQuestion(5)">Next</button></p>
+        </div>
+
+        <div class="question" id="question-6">
+            <p><b>6. What are your main goals for your renovation project(s)? (Select all that apply)</b></p>
+            <label><input type="checkbox" name="goals" value="Energy efficiency"> Energy efficiency</label><br>
+            <label><input type="checkbox" name="goals" value="Cost reduction"> Cost reduction</label><br>
+            <label><input type="checkbox" name="goals" value="Sustainability"> Sustainability</label><br>
+            <label><input type="checkbox" name="goals" value="Improving comfort and health"> Improving comfort and health</label><br>
+            <p><button onclick="nextQuestion(6)">Next</button></p>
+        </div>
+
+        <div class="question" id="question-7">
+            <p><b>7. What are the biggest challenges you face in your renovation projects? (Select all that apply)</b></p>
+            <label><input type="checkbox" name="challenges" value="Budget constraints"> Budget constraints</label><br>
+            <label><input type="checkbox" name="challenges" value="Technical expertise"> Technical expertise</label><br>
+            <label><input type="checkbox" name="challenges" value="Stakeholder engagement"> Stakeholder engagement</label><br>
+            <label><input type="checkbox" name="challenges" value="Regulatory compliance"> Regulatory compliance</label><br>
+            <p><button onclick="nextQuestion(7)">Next</button></p>
+        </div>
+
+        <div class="question" id="question-8">
+            <p><b>8. How would you rate your proficiency in the following areas? (Rate on a scale of 1-5)</b></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Area</th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Project Management</td>
+                        <td><input type="radio" name="proficiency-project-management" value="1"></td>
+                        <td><input type="radio" name="proficiency-project-management" value="2"></td>
+                        <td><input type="radio" name="proficiency-project-management" value="3"></td>
+                        <td><input type="radio" name="proficiency-project-management" value="4"></td>
+                        <td><input type="radio" name="proficiency-project-management" value="5"></td>
+                    </tr>
+                    <tr>
+                        <td>Technical Knowledge</td>
+                        <td><input type="radio" name="proficiency-technical-knowledge" value="1"></td>
+                        <td><input type="radio" name="proficiency-technical-knowledge" value="2"></td>
+                        <td><input type="radio" name="proficiency-technical-knowledge" value="3"></td>
+                        <td><input type="radio" name="proficiency-technical-knowledge" value="4"></td>
+                        <td><input type="radio" name="proficiency-technical-knowledge" value="5"></td>
+                    </tr>
+                    <tr>
+                        <td>Stakeholder Communication</td>
+                        <td><input type="radio" name="proficiency-stakeholder-communication" value="1"></td>
+                        <td><input type="radio" name="proficiency-stakeholder-communication" value="2"></td>
+                        <td><input type="radio" name="proficiency-stakeholder-communication" value="3"></td>
+                        <td><input type="radio" name="proficiency-stakeholder-communication" value="4"></td>
+                        <td><input type="radio" name="proficiency-stakeholder-communication" value="5"></td>
+                    </tr>
+                    <tr>
+                        <td>Regulatory Knowledge</td>
+                        <td><input type="radio" name="proficiency-regulatory-knowledge" value="1"></td>
+                        <td><input type="radio" name="proficiency-regulatory-knowledge" value="2"></td>
+                        <td><input type="radio" name="proficiency-regulatory-knowledge" value="3"></td>
+                        <td><input type="radio" name="proficiency-regulatory-knowledge" value="4"></td>
+                        <td><input type="radio" name="proficiency-regulatory-knowledge" value="5"></td>
+                    </tr>
+                    <tr>
+                        <td>Innovation and Best Practices</td>
+                        <td><input type="radio" name="proficiency-innovation" value="1"></td>
+                        <td><input type="radio" name="proficiency-innovation" value="2"></td>
+                        <td><input type="radio" name="proficiency-innovation" value="3"></td>
+                        <td><input type="radio" name="proficiency-innovation" value="4"></td>
+                        <td><input type="radio" name="proficiency-innovation" value="5"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button onclick="nextQuestion(8)">Next</button>
+        </div>
+
+        <div class="question" id="question-9">
+            <p><b>9. What level of proficiency do you aim to achieve in renovation skills?</b></p>
+            <label><input type="radio" name="aimed-proficiency" value="Basic understanding"> Basic understanding</label><br>
+            <label><input type="radio" name="aimed-proficiency" value="Intermediate proficiency"> Intermediate proficiency</label><br>
+            <label><input type="radio" name="aimed-proficiency" value="Expert proficiency"> Expert proficiency</label><br>
+            <p><button onclick="nextQuestion(9)">Next</button></p>
+        </div>
+
+        <div class="question" id="question-10">
+            <p><b>10. What specific skills or knowledge areas are you looking to improve?</b></p>
+            <textarea style='font-family: Montserrat;' name="improve-skills" rows="3" placeholder="Please specify..."></textarea><br>
+            <p><button onclick="nextQuestion(10)">Next</button></p>
+        </div>
+
+        <div class="question" id="question-11">
+            <p><b>11. Are you familiar with conducting a feasibility assessment for renovation projects?</b></p>
+            <label><input type="radio" name="feasibility" value="Yes"> Yes</label><br>
+            <label><input type="radio" name="feasibility" value="No"> No</label><br>
+            <p><button onclick="nextQuestion(11)">Next</button></p>
+        </div>
+
+        <div class="question" id="question-12">
+            <p><b>12. How many feasibility assessments for renovation have you been involved in?</b></p>
+            <label><input type="radio" name="feasibility-count" value="0-1"> 0-1</label><br>
+            <label><input type="radio" name="feasibility-count" value="2-5"> 2-5</label><br>
+            <label><input type="radio" name="feasibility-count" value="More than 5"> More than 5</label><br>
+            <p><button onclick="nextQuestion(12)">Next</button></p>
+        </div>
+
+        <div class="question" id="question-13">
+            <p><b>13. Do you actively seek out additional resources or materials from other projects?</b></p>
+            <label><input type="radio" name="resources" value="Yes"> Yes</label><br>
+            <label><input type="radio" name="resources" value="No"> No</label><br>
+            <p><button onclick="nextQuestion(13)">Next</button></p>
+        </div>
+
+        <div class="question" id="question-14">
+            <p><b>14. Please list any external resources you have sought out.</b></p>
+            <textarea style='font-family: Montserrat;'name="external-resources" rows="3" placeholder="Please specify..."></textarea><br>
+            <p><button onclick="nextQuestion(14)">Next</button></p>
+        </div>
+
+        <div class="question" id="question-15">
+            <p><b>15. If you renovate, what kind of support would you need? (Check all that apply)</b></p>
+            <label><input type="checkbox" name="support" value="Financial support"> Financial support (e.g. funding, rebates)</label><br>
+            <label><input type="checkbox" name="support" value="Administrative support"> Administrative procedures (e.g. permits, funding applications)</label><br>
+            <label><input type="checkbox" name="support" value="Technical support"> Technical planning (e.g. choosing contractors)</label><br>
+            <label><input type="checkbox" name="support" value="Construction support"> During construction (e.g. minimizing impacts)</label><br>
+            <label><input type="checkbox" name="support" value="Site visits"> Site visits to renovated buildings</label><br>
+            <label><input type="checkbox" name="support" value="Decision-making support"> Decision-making with other residents</label><br>
+            <label><input type="checkbox" name="support" value="Cost management"> Cost management (e.g. estimating and avoiding unforeseen costs)</label><br>
+            <label><input type="checkbox" name="support" value="Other"> Other:</label>
+            <textarea style='font-family: Montserrat;'name="other-support" rows="2" placeholder="Please specify..."></textarea><br>
+            <p><button onclick="processSurvey()">Submit</button></p>
+        </div>
+    </div>
+
+    <div id="result" class="hidden">
+        <p id="result-message"></p>
+    </div>
+
+    <script>
+        function nextQuestion(currentQuestion) {
+            document.getElementById(`question-${currentQuestion}`).classList.remove('active');
+            document.getElementById(`question-${currentQuestion + 1}`).classList.add('active');
+        }
+
+        function processSurvey() {
+            const role = document.querySelector('input[name="role"]:checked')?.value;
+            const engagement = document.querySelector('input[name="engagement"]:checked')?.value;
+            const projects = document.querySelector('input[name="projects"]:checked')?.value;
+            const objective = document.querySelector('input[name="objective"]:checked')?.value;
+
+            let resultMessage = "";
+
+            if (role === "Advanced Practitioner" && engagement === "High involvement") {
+                resultMessage = "Based on your experience and involvement, we recommend exploring advanced leadership pathways.";
+            } else if (projects === "0-1" || engagement === "Low involvement") {
+                resultMessage = "You seem to be at the beginning of your renovation journey. We recommend starting with foundational resources.";
+            } else {
+                resultMessage = "You have a diverse set of goals. A personalized pathway will be created for you.";
+            }
+
+            document.getElementById('survey').classList.add('hidden');
+            document.getElementById('result').classList.remove('hidden');
+            document.getElementById('result-message').textContent = resultMessage;
+        }
+    </script>
+</body>
+</html>
